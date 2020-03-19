@@ -12,7 +12,7 @@ var express = require('express'),
 // mongoose.Promise = global.Promise;
 
 
-const string1="mongodb+srv://makflakes:ramadhaan2011@cluster0-0cuvw.mongodb.net/test?retryWrites=true&w=majority";// add your database string here
+const string1="";// add your database string here
 mongoose.connect(string1,{useNewUrlParser:true,useUnifiedTopology: true,useCreateIndex: true,useFindAndModify:false}); 
 
 
