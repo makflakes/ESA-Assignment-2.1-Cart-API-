@@ -6,26 +6,26 @@ var CartSchema = new Schema({
 
     username:{
         type:String,
-        required:"username is missing"
+        required:true
     },
     
     productId: {
         type: String,
-        required: 'Kindly enter the product-id'
+        required: true
     },
 
     productName: {
     type: String,
-    required: 'Kindly enter the name of the product'
+    required:true
     },
 
     quantity: {
     type: Number,
-    required: 'Kindly enter the available quantity'
+    required:true
     },
     amount: {
     type: Number,
-    required: 'Kindly enter the price of the model'
+    required:true
     }
 
 
