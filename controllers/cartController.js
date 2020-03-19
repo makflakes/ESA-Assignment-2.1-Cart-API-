@@ -5,22 +5,21 @@ var mongoose = require('mongoose'),
 
 CartItem = mongoose.model('Cart');
 
+exports.allcartitems = function(req, res) {
+    CartItem.find({username:req.params.username}, 
+      function(err, product) {
 
-
-exports.list_all_cartitems = function(req, res) {
-    CartItem.find({username:req.params.username}, function(err, product) {
       if (err)
         res.send(err);
       res.json(product);
+      
     });
   };
   
   
-  
-  
-  exports.create_a_cartitem = function(req, res) {
-    var new_cartItem = new CartItem(req.body);
-    new_cartItem.save(function(err, cartItem) {
+ exports.newcartitem = function(req, res) {
+    var cartItemnew = new CartItem(req.body);
+    cartItemnew.save(function(err, cartItem) {
       if (err)
         res.send(err);
       res.json(cartItem);
@@ -28,33 +27,37 @@ exports.list_all_cartitems = function(req, res) {
   };
 
   
-exports.read_a_cartitem = function(req, res) {
-    CartItem.find({productId:req.params.productId,username:req.params.username}, function(err, product) {
+exports.showcartitem = function(req, res) {
+    CartItem.find({productId:req.params.productId,username:req.params.username}, 
+      function(err, product) {
+
       if (err)
         res.send(err);
       res.json(product);
+
     });
   };
   
   
-  exports.update_a_cartitem = function(req, res) {
-    CartItem.findOneAndUpdate({productId: req.params.productId,username:req.params.username}, req.body, {new: true}, function(err, product) {
-      if (err)
+  exports.updatecartitem = function(req, res) {
+    CartItem.findOneAndUpdate({productId: req.params.productId,username:req.params.username}, req.body, {new: true}, 
+      function(err, product) {
+      
+        if (err)
         res.send(err);
-      res.json(product);
+        res.json(product);
     });
   };
   
   
-  exports.delete_a_cartitem = function(req, res) {
-  
-  
+  exports.deletecartitem = function(req, res) {
     CartItem.remove({
-      productId: req.params.productId,
-      username:req.params.username
-    }, function(err, product) {
-      if (err)
+      productId: req.params.productId, username:req.params.username},
+       function(err, product) {
+      
+        if (err)
         res.send(err);
-      res.json({ message: 'Product successfully deleted' });
+      res.json({ message: 'Product has been deleted' });
+    
     });
   };
