@@ -5,20 +5,14 @@ var UserSchema = new Schema({
 
     username:{
         type:String,
-        required:"kindly enter the username",
+        required:true,
         unique:true
     },
 
     password:{
         type:String,
-        required:"kindly enter the password",
-    },
-
-    emailId:{
-        type:String,
-        required:"kindly enter emailid",
-    },
-
+        required:true,
+    }
 })
 
 module.exports = mongoose.model('User', UserSchema);
