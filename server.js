@@ -1,35 +1,43 @@
 var express = require('express'),
+
   app = express(),
-  port = process.env.PORT || 4000,
+  port = process.env.PORT || 5000,
+
+
   mongoose = require('mongoose'),
-  User = require('./models/userModel'), //created model loading here
-  CartItem = require('./models/cartModel'), //created model loading here
+  
+  User = require('./models/userModel'), 
+  CartItem = require('./models/cartModel'), 
   ProductItem = require('./models/ProductModel'),
 
   bodyParser = require('body-parser');
   
-// mongoose instance connection url connection
-// mongoose.Promise = global.Promise;
 
 
-const string1="";// add your database string here
-mongoose.connect(string1,{useNewUrlParser:true,useUnifiedTopology: true,useCreateIndex: true,useFindAndModify:false}); 
+//MongoDB Atlas Connection
 
+const atlas_link="";   //MongoDB Atlas Connection link
+
+mongoose.connect(atlas_link, {useNewUrlParser:true,useUnifiedTopology: true);
+
+
+//Parsers
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-var cartRoutes = require('./routes/cartRoutes'); //importing route
-var userRoutes = require('./routes/userRoutes'); //importing route
+//Routes
+
+var cartRoutes = require('./routes/cartRoutes'); 
+var userRoutes = require('./routes/userRoutes'); 
 var productRoutes = require('./routes/productRoutes');
 
 
-cartRoutes(app); //register the route
-userRoutes(app); //register the route
-
-
-
+//Connecting it to the express module
+cartRoutes(app);
+userRoutes(app); 
+productRoutes(app);
 
 app.listen(port);
 
