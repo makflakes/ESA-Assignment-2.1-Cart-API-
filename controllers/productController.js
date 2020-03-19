@@ -9,7 +9,7 @@ Product = mongoose.model('Products');
 
 
 
-exports.list_all_products = function(req, res) {
+exports.allproducts = function(req, res) {
   Product.find({}, function(err, product) {
     if (err)
       res.send(err);
@@ -20,9 +20,9 @@ exports.list_all_products = function(req, res) {
 
 
 
-exports.create_a_product = function(req, res) {
-  var new_product = new Product(req.body);
-  new_product.save(function(err, product) {
+exports.createnewproduct = function(req, res) {
+  var newProduct = new Product(req.body);
+  newProduct.save(function(err, product) {
     if (err)
       res.send(err);
     res.json(product);
@@ -30,7 +30,7 @@ exports.create_a_product = function(req, res) {
 };
 
 
-exports.read_a_product = function(req, res) {
+exports.showproduct = function(req, res) {
   Product.find({productId:req.params.productId}, function(err, product) {
     if (err)
       res.send(err);
@@ -39,7 +39,7 @@ exports.read_a_product = function(req, res) {
 };
 
 
-exports.update_a_product = function(req, res) {
+exports.updateproduct = function(req, res) {
   Product.findOneAndUpdate({productId: req.params.productId}, req.body, {new: true}, function(err, product) {
     if (err)
       res.send(err);
@@ -48,14 +48,14 @@ exports.update_a_product = function(req, res) {
 };
 
 
-exports.delete_a_product = function(req, res) {
-
-
+exports.deleteproduct = function(req, res) {
   Product.remove({
-    _id: req.params.productId
-  }, function(err, product) {
+    _id: req.params.productId},
+     function(err, product) {
+
     if (err)
       res.send(err);
-    res.json({ message: 'Product successfully deleted' });
+    res.json({ message: 'Product has been deleted' });
+
   });
 };
