@@ -3,6 +3,12 @@ var Schema = mongoose.Schema;
 
 
 var CartSchema = new Schema({
+
+    username:{
+        type:String,
+        required:"username is missing"
+    },
+    
     productId: {
         type: String,
         required: 'Kindly enter the product-id'
@@ -20,10 +26,6 @@ var CartSchema = new Schema({
     amount: {
     type: Number,
     required: 'Kindly enter the price of the model'
-    },
-    username:{
-        type:String,
-        required:"username is missing"
     }
 
 
