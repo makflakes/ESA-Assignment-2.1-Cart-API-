@@ -5,20 +5,20 @@ var express = require('express'),
 
 
   mongoose = require('mongoose'),
-  
+
   User = require('./models/userModel'), 
   CartItem = require('./models/cartModel'), 
   ProductItem = require('./models/ProductModel'),
 
   bodyParser = require('body-parser');
+
+require("dotenv/config");
   
 
 
 //MongoDB Atlas Connection
-
-const atlas_link="";   //MongoDB Atlas Connection link
-
-mongoose.connect(atlas_link, {useNewUrlParser:true,useUnifiedTopology: true);
+//MongoDB Atlas Connection link is through an.env file
+mongoose.connect(process.env.DB_CONNECTION,{useNewUrlParser:true,useUnifiedTopology: true);
 
 
 //Parsers
