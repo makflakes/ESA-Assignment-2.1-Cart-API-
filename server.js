@@ -42,4 +42,4 @@ productRoutes(app);
 app.listen(port);
 
 
-console.log('shopping cart RESTful API server started on: ' + port);
+console.log('Server running on port : ' + port);
